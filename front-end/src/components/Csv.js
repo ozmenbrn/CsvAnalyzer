@@ -7,6 +7,7 @@ import { Grid } from "@material-ui/core/es";
 import uploadIcon from "../assets/images/upload.png";
 import downloadIcon from "../assets/images/download.png";
 import deleteIcon from "../assets/images/delete.jpg";
+import { CSVLink } from "react-csv";
 
 class Csv extends Component {
   constructor(props) {
@@ -46,13 +47,34 @@ class Csv extends Component {
 
   downloadCsv() {
     const { updateDB } = this.props;
-    updateDB(0, "NABER");
-    console.log("download");
   }
 
   render() {
     const { showMenu, filterMethodString } = this.state;
     const { csvData, csvHeader } = this.props;
+
+    if (!csvData) {
+      return <div />;
+    }
+
+    let downloadData = [];
+    let header = [];
+
+    for (let j = 0; j < csvHeader.length; j++) {
+      header.push(csvHeader[j].Header);
+    }
+
+    downloadData.push(header);
+
+    for (let i = 0; i < csvData.length; i++) {
+      let body = [];
+
+      for (let j = 0; j < csvHeader.length; j++) {
+        let columnName = csvHeader[j].Header;
+        body.push(csvData[i][columnName]);
+      }
+      downloadData.push(body);
+    }
 
     return (
       <div>
@@ -75,15 +97,17 @@ class Csv extends Component {
                 width: "30px"
               }}
             />
-            <img
-              alt="weFantastic"
-              src={downloadIcon}
-              onClick={() => this.downloadCsv()}
-              style={{
-                width: "26px",
-                marginLeft: "20px"
-              }}
-            />
+            <CSVLink data={downloadData}>
+              <img
+                alt="weFantastic"
+                src={downloadIcon}
+                onClick={() => this.downloadCsv()}
+                style={{
+                  width: "26px",
+                  marginLeft: "20px"
+                }}
+              />
+            </CSVLink>
             <img
               alt="weFantastic"
               onClick={() => this.deleteCsv()}
