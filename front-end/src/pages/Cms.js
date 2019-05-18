@@ -138,8 +138,6 @@ class Cms extends Component {
 
     let hash = this.generateHash(hashString);
 
-    console.log(hashString);
-
     axios
       .post(`${baseUrl}putData?param=${hash}`, {
         id: idToBeAdded,
