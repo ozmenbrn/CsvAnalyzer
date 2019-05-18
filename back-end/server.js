@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const logger = require("morgan");
 const Data = require("./data");
 const writeFileP = require("write-file-p");
+const moment = require("moment");
 
 const API_PORT = 3001;
 const app = express();
@@ -13,6 +14,7 @@ const router = express.Router();
 
 const username = "5342745714";
 const password = "password";
+const token = username + password;
 
 // (optional) only made for logging and
 // bodyParser, parses the request body to be a readable json format
@@ -20,10 +22,34 @@ app.use(bodyParser.urlencoded({ extended: false, limit: "50MB" }));
 app.use(bodyParser.json({ limit: "50MB" }));
 app.use(logger("dev"));
 
+function decrpytHash(text) {
+  const CryptoJS = require("crypto-js");
+
+  var bytes = CryptoJS.AES.decrypt(text.toString(), "Mine Secret");
+  var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+
+  return decryptedData;
+}
+
 // this is our get method
 // this method fetches all available data in our database
 router.get("/getData", (req, res, next) => {
   const fs = require("fs");
+
+  let decrptedHash = decrpytHash(req.query.param);
+
+  let isValid = false;
+
+  for (var i = 0; i < 10; i++) {
+    let current = token + (moment().unix() - i);
+    if (decrptedHash === current) {
+      isValid = true;
+    }
+  }
+
+  if (!isValid) {
+    return res.json({ success: false, data: [] });
+  }
 
   let rawdata = fs.readFileSync(`csvs/${req.query.name}`);
   let data = JSON.parse(rawdata);
@@ -35,6 +61,21 @@ router.get("/listData", (req, res, next) => {
   const path = require("path");
   const fs = require("fs");
   //joining path of directory
+
+  let decrptedHash = decrpytHash(req.query.param);
+
+  let isValid = false;
+
+  for (var i = 0; i < 10; i++) {
+    let current = token + (moment().unix() - i);
+    if (decrptedHash === current) {
+      isValid = true;
+    }
+  }
+
+  if (!isValid) {
+    return res.json({ success: false, data: [] });
+  }
 
   const directoryPath = path.join("csvs");
 
@@ -49,24 +90,15 @@ router.get("/listData", (req, res, next) => {
     //listing all files using forEach
     files.forEach(function(file) {
       let searchQuery = req.query.query;
-      if (file.substring(0, searchQuery.length) === searchQuery) {
+      if (
+        file.substring(0, searchQuery.length) === searchQuery &&
+        file.substring(file.length - 4) === "json"
+      ) {
         list.push(file);
       }
-      // Do whatever you want to do with the file
-      //console.log(file);
     });
 
     return res.json({ success: true, data: list });
-  });
-});
-
-// this is our update method
-// this method overwrites existing data in our database
-router.post("/updateData", (req, res) => {
-  const { id, update } = req.body;
-  Data.findOneAndUpdate(id, update, err => {
-    if (err) return res.json({ success: false, error: err });
-    return res.json({ success: true });
   });
 });
 
@@ -74,6 +106,21 @@ router.post("/updateData", (req, res) => {
 // this method removes existing data in our database
 router.get("/deleteData", (req, res, next) => {
   const fs = require("fs");
+
+  let decrptedHash = decrpytHash(req.query.param);
+
+  let isValid = false;
+
+  for (var i = 0; i < 10; i++) {
+    let current = token + (moment().unix() - i);
+    if (decrptedHash === current) {
+      isValid = true;
+    }
+  }
+
+  if (!isValid) {
+    return res.json({ success: false });
+  }
 
   fs.unlinkSync(`csvs/${req.query.name}.json`);
 
@@ -86,6 +133,21 @@ router.post("/putData", (req, res, next) => {
   let data = new Data();
 
   const { id, name, columns, body } = req.body;
+
+  let decrptedHash = decrpytHash(req.query.param);
+
+  let isValid = false;
+
+  for (var i = 0; i < 10; i++) {
+    let current = token + (moment().unix() - i);
+    if (decrptedHash === current) {
+      isValid = true;
+    }
+  }
+
+  if (!isValid) {
+    return res.json({ success: false });
+  }
 
   if ((!id && id !== 0) || !name) {
     return res.json({

@@ -9,6 +9,8 @@ import SearchComponent from "../components/SearchComponent";
 import Auth from "../components/Auth";
 import { ListItem, List } from "@material-ui/core";
 import axios from "axios";
+import moment from "moment";
+import CryptoJS from "crypto-js";
 
 const baseUrl = "http://localhost:3001/api/";
 const username = "5342745714";
@@ -92,23 +94,22 @@ class Cms extends Component {
       csvList: [],
       csvName: null,
       id: 0,
-      csvName: null,
-      intervalIsSet: false,
-      idToDelete: null,
-      idToUpdate: null,
-      objectToUpdate: null,
-      modalOpen: false,
       loading: false,
-      authorized: false
+      authorized: false,
+      token: ""
     };
   }
 
   getDataFromDb = key => {
-    const { csvList } = this.state;
+    const { csvList, token } = this.state;
 
     this.setState({ loading: true, csvData: null, csvHeader: null });
 
-    fetch(`${baseUrl}getData?name=${csvList[key]}`)
+    let hashString = token + moment().unix();
+
+    let hash = this.generateHash(hashString);
+
+    fetch(`${baseUrl}getData?name=${csvList[key]}&param=${hash}`)
       .then(data => data.json())
       .then(res => {
         this.setState({
@@ -123,7 +124,7 @@ class Cms extends Component {
   // our put method that uses our backend api
   // to create new query into our data base
   putDataToDB = (csvName, csvData, csvHeader) => {
-    const { csvList, searchQuery } = this.state;
+    const { csvList, searchQuery, token } = this.state;
 
     let currentIds = csvList.map(data => data.id);
     let idToBeAdded = 0;
@@ -133,12 +134,19 @@ class Cms extends Component {
 
     this.setState({ loading: true });
 
+    let hashString = token + moment().unix();
+
+    let hash = this.generateHash(hashString);
+
+    console.log(hashString);
+
     axios
-      .post(`${baseUrl}putData`, {
+      .post(`${baseUrl}putData?param=${hash}`, {
         id: idToBeAdded,
         name: csvName,
         columns: csvHeader,
-        body: csvData
+        body: csvData,
+        param: hash
       })
       .then(response => {
         this.getCsvListFromDb(searchQuery);
@@ -146,25 +154,37 @@ class Cms extends Component {
       })
       .catch(err => {
         console.log(err);
+        this.setState({ loading: false });
       });
   };
 
   getCsvListFromDb = text => {
-    fetch(`${baseUrl}listData?query=${text}`)
+    const { token } = this.state;
+
+    let hashString = token + moment().unix();
+
+    let hash = this.generateHash(hashString);
+
+    fetch(`${baseUrl}listData?query=${text}&param=${hash}`)
       .then(data => data.json())
       .then(res => {
         this.setState({ csvList: res.data });
+        this.setState({ loading: false });
       });
   };
 
   // our delete method that uses our backend api
   // to remove existing database information
   deleteFromDB = () => {
-    const { csvName, searchQuery } = this.state;
+    const { csvName, searchQuery, token } = this.state;
 
     this.setState({ loading: true });
 
-    fetch(`${baseUrl}deleteData?name=${csvName}`)
+    let hashString = token + moment().unix();
+
+    let hash = this.generateHash(hashString);
+
+    fetch(`${baseUrl}deleteData?name=${csvName}&param=${hash}`)
       .then(response => {
         this.getCsvListFromDb(searchQuery);
         this.setState({
@@ -176,25 +196,8 @@ class Cms extends Component {
       })
       .catch(err => {
         console.log(err);
+        this.setState({ loading: false });
       });
-  };
-
-  // our update method that uses our backend api
-  // to overwrite existing data base information
-  updateDB = (idToUpdate, updateToApply) => {
-    const { csvList } = this.state;
-
-    let objIdToUpdate = null;
-    csvList.forEach(dat => {
-      if (dat.id === idToUpdate) {
-        objIdToUpdate = dat._id;
-      }
-    });
-
-    axios.post(`${baseUrl}updateData`, {
-      id: objIdToUpdate,
-      update: { csvName: updateToApply }
-    });
   };
 
   componentDidMount() {
@@ -206,10 +209,22 @@ class Cms extends Component {
       localStorage.getItem("username") === username &&
       localStorage.getItem("password") === password
     ) {
-      this.setState({ authorized: true });
+      this.setState({
+        authorized: true,
+        token:
+          localStorage.getItem("username") + localStorage.getItem("password")
+      });
     }
 
-    this.getCsvListFromDb(searchQuery);
+    setTimeout(() => {
+      this.getCsvListFromDb(searchQuery);
+    }, 1000);
+  }
+
+  generateHash(text) {
+    var hash = CryptoJS.AES.encrypt(JSON.stringify(text), "Mine Secret");
+
+    return encodeURIComponent(hash);
   }
 
   componentWillUnmount() {
@@ -271,7 +286,7 @@ class Cms extends Component {
     localStorage.setItem("password", str2);
 
     if (str1 === username && str2 === password) {
-      this.setState({ authorized: true });
+      this.setState({ authorized: true, token: str1 + str2 });
     } else {
       window.alert("Wrong Credentials");
     }
@@ -309,8 +324,6 @@ class Cms extends Component {
   render() {
     const { height, csvHeader, csvData, loading, authorized } = this.state;
     const { classes } = this.props;
-
-    console.log(loading);
 
     if (!authorized) {
       return <Auth authEvent={this.authEvent} />;
