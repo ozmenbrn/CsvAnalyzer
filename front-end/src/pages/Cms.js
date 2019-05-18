@@ -117,7 +117,7 @@ class Cms extends Component {
   // our put method that uses our backend api
   // to create new query into our data base
   putDataToDB = (csvName, csvData, csvHeader) => {
-    const { csvList } = this.state;
+    const { csvList, searchQuery } = this.state;
 
     let currentIds = csvList.map(data => data.id);
     let idToBeAdded = 0;
@@ -135,7 +135,7 @@ class Cms extends Component {
         body: csvData
       })
       .then(response => {
-        this.getCsvListFromDb();
+        this.getCsvListFromDb(searchQuery);
         this.setState({ loading: false });
       })
       .catch(err => {
@@ -143,8 +143,8 @@ class Cms extends Component {
       });
   };
 
-  getCsvListFromDb = () => {
-    fetch("http://localhost:3001/api/listData")
+  getCsvListFromDb = text => {
+    fetch(`http://localhost:3001/api/listData?query=${text}`)
       .then(data => data.json())
       .then(res => {
         this.setState({ csvList: res.data });
@@ -154,13 +154,13 @@ class Cms extends Component {
   // our delete method that uses our backend api
   // to remove existing database information
   deleteFromDB = () => {
-    const { csvName } = this.state;
+    const { csvName, searchQuery } = this.state;
 
     this.setState({ loading: true });
 
     fetch(`http://localhost:3001/api/deleteData?name=${csvName}`)
       .then(response => {
-        this.getCsvListFromDb();
+        this.getCsvListFromDb(searchQuery);
         this.setState({
           loading: false,
           selectedItem: null,
@@ -192,10 +192,11 @@ class Cms extends Component {
   };
 
   componentDidMount() {
+    const { searchQuery } = this.state;
     this.resizeEvent();
     window.addEventListener("resize", () => this.resizeEvent());
 
-    this.getCsvListFromDb();
+    this.getCsvListFromDb(searchQuery);
   }
 
   componentWillUnmount() {
@@ -238,7 +239,8 @@ class Cms extends Component {
     this.setState({
       csvHeader: columns,
       csvData: makeCsvData(csvBody, accessors),
-      loading: false
+      loading: false,
+      selectedItem: null
     });
   };
 
@@ -248,6 +250,7 @@ class Cms extends Component {
 
   searchEvent = text => {
     this.setState({ searchQuery: text });
+    this.getCsvListFromDb(text);
   };
 
   resizeEvent() {
@@ -264,6 +267,7 @@ class Cms extends Component {
     const { selectedItem, csvList } = this.state;
 
     return csvList.map((item, i) => {
+      let csvItem = item.substring(0, item.length - 5);
       return (
         <ListItem
           selected={selectedItem === i ? true : false}
@@ -272,7 +276,7 @@ class Cms extends Component {
           className={classes.csvListItem}
           onClick={() => this.onSelectMenuItem(i)}
         >
-          <div className={classes.listItem}>{item}</div>
+          <div className={classes.listItem}>{csvItem}</div>
         </ListItem>
       );
     });

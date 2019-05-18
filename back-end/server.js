@@ -32,6 +32,7 @@ router.get("/listData", (req, res, next) => {
   const path = require("path");
   const fs = require("fs");
   //joining path of directory
+
   const directoryPath = path.join("csvs");
 
   //passsing directoryPath and callback function
@@ -44,8 +45,11 @@ router.get("/listData", (req, res, next) => {
     let list = [];
     //listing all files using forEach
     files.forEach(function(file) {
+      let searchQuery = req.query.query;
+      if (file.substring(0, searchQuery.length) === searchQuery) {
+        list.push(file);
+      }
       // Do whatever you want to do with the file
-      list.push(file);
       //console.log(file);
     });
 
