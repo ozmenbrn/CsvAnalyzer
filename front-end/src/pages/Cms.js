@@ -280,11 +280,16 @@ class Cms extends Component {
   };
 
   authEvent = (str1, str2) => {
+    const { searchQuery } = this.state;
+
     localStorage.setItem("username", str1);
     localStorage.setItem("password", str2);
 
     if (str1 === username && str2 === password) {
       this.setState({ authorized: true, token: str1 + str2 });
+      setTimeout(() => {
+        this.getCsvListFromDb(searchQuery);
+      }, 1000);
     } else {
       window.alert("Wrong Credentials");
     }
