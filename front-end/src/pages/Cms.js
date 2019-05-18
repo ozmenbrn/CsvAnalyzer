@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { Grid } from "@material-ui/core/es";
+import { Grid, CircularProgress } from "@material-ui/core/es";
 import Csv from "../components/Csv";
 import { makeCsvData } from "../utils/Utils";
 import CSVReader from "react-csv-reader";
@@ -9,7 +9,7 @@ import SearchComponent from "../components/SearchComponent";
 import { ListItem, List } from "@material-ui/core";
 import axios from "axios";
 
-const styles = {
+const styles = theme => ({
   root: {
     flexGrow: 1,
     overflow: "hidden"
@@ -69,8 +69,9 @@ const styles = {
     WebkitBoxOrient: "vertical",
     overflow: "hidden",
     textOverflow: "ellipsis"
-  }
-};
+  },
+  progress: {}
+});
 
 class Cms extends Component {
   constructor(props) {
@@ -91,19 +92,25 @@ class Cms extends Component {
       idToDelete: null,
       idToUpdate: null,
       objectToUpdate: null,
-      modalOpen: false
+      modalOpen: false,
+      loading: false
     };
   }
 
   getDataFromDb = key => {
     const { csvList } = this.state;
 
+    this.setState({ loading: true, csvData: null, csvHeader: null });
+
     fetch(`http://localhost:3001/api/getData?name=${csvList[key]}`)
       .then(data => data.json())
       .then(res => {
-        this.setState({ csvData: res.data.data.body });
-        this.setState({ csvHeader: res.data.data.columns });
-        this.setState({ csvName: res.data.data.name });
+        this.setState({
+          csvData: res.data.data.body,
+          csvHeader: res.data.data.columns,
+          csvName: res.data.data.name,
+          loading: false
+        });
       });
   };
 
@@ -118,6 +125,8 @@ class Cms extends Component {
       ++idToBeAdded;
     }
 
+    this.setState({ loading: true });
+
     axios
       .post("http://localhost:3001/api/putData", {
         id: idToBeAdded,
@@ -127,6 +136,7 @@ class Cms extends Component {
       })
       .then(response => {
         this.getCsvListFromDb();
+        this.setState({ loading: false });
       })
       .catch(err => {
         console.log(err);
@@ -146,9 +156,17 @@ class Cms extends Component {
   deleteFromDB = () => {
     const { csvName } = this.state;
 
+    this.setState({ loading: true });
+
     fetch(`http://localhost:3001/api/deleteData?name=${csvName}`)
       .then(response => {
         this.getCsvListFromDb();
+        this.setState({
+          loading: false,
+          selectedItem: null,
+          csvData: null,
+          csvHeader: null
+        });
       })
       .catch(err => {
         console.log(err);
@@ -219,7 +237,8 @@ class Cms extends Component {
 
     this.setState({
       csvHeader: columns,
-      csvData: makeCsvData(csvBody, accessors)
+      csvData: makeCsvData(csvBody, accessors),
+      loading: false
     });
   };
 
@@ -260,8 +279,10 @@ class Cms extends Component {
   };
 
   render() {
-    const { height, csvHeader, csvData } = this.state;
+    const { height, csvHeader, csvData, loading } = this.state;
     const { classes } = this.props;
+
+    console.log(loading);
 
     return (
       <div className={classes.root}>
@@ -306,6 +327,17 @@ class Cms extends Component {
               </Grid>
             </Grid>
             <Grid item xs={10} className={classes.rhsMain}>
+              {loading && (
+                <div
+                  style={{
+                    position: "absolute",
+                    textAlign: "center",
+                    left: "55%"
+                  }}
+                >
+                  <CircularProgress className={classes.progress} />
+                </div>
+              )}
               <Csv
                 csvHeader={csvHeader}
                 csvData={csvData}
