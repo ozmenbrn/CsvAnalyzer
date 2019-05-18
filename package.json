@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"cd backend && node server.js\" \"cd csv-analyzer && npm start\""
+    "start": "concurrently \"cd back-end && node server.js\" \"cd front-end && npm start\""
   },
   "keywords": [],
   "author": "",
