@@ -11,6 +11,9 @@ const app = express();
 app.use(cors());
 const router = express.Router();
 
+const username = "5342745714";
+const password = "password";
+
 // (optional) only made for logging and
 // bodyParser, parses the request body to be a readable json format
 app.use(bodyParser.urlencoded({ extended: false, limit: "50MB" }));

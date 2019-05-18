@@ -6,8 +6,13 @@ import { makeCsvData } from "../utils/Utils";
 import CSVReader from "react-csv-reader";
 import logo from "../assets/images/wpwflogo.png";
 import SearchComponent from "../components/SearchComponent";
+import Auth from "../components/Auth";
 import { ListItem, List } from "@material-ui/core";
 import axios from "axios";
+
+const baseUrl = "http://localhost:3001/api/";
+const username = "5342745714";
+const password = "password";
 
 const styles = theme => ({
   root: {
@@ -93,7 +98,8 @@ class Cms extends Component {
       idToUpdate: null,
       objectToUpdate: null,
       modalOpen: false,
-      loading: false
+      loading: false,
+      authorized: false
     };
   }
 
@@ -102,7 +108,7 @@ class Cms extends Component {
 
     this.setState({ loading: true, csvData: null, csvHeader: null });
 
-    fetch(`http://localhost:3001/api/getData?name=${csvList[key]}`)
+    fetch(`${baseUrl}getData?name=${csvList[key]}`)
       .then(data => data.json())
       .then(res => {
         this.setState({
@@ -128,7 +134,7 @@ class Cms extends Component {
     this.setState({ loading: true });
 
     axios
-      .post("http://localhost:3001/api/putData", {
+      .post(`${baseUrl}putData`, {
         id: idToBeAdded,
         name: csvName,
         columns: csvHeader,
@@ -144,7 +150,7 @@ class Cms extends Component {
   };
 
   getCsvListFromDb = text => {
-    fetch(`http://localhost:3001/api/listData?query=${text}`)
+    fetch(`${baseUrl}listData?query=${text}`)
       .then(data => data.json())
       .then(res => {
         this.setState({ csvList: res.data });
@@ -158,7 +164,7 @@ class Cms extends Component {
 
     this.setState({ loading: true });
 
-    fetch(`http://localhost:3001/api/deleteData?name=${csvName}`)
+    fetch(`${baseUrl}deleteData?name=${csvName}`)
       .then(response => {
         this.getCsvListFromDb(searchQuery);
         this.setState({
@@ -185,7 +191,7 @@ class Cms extends Component {
       }
     });
 
-    axios.post("http://localhost:3001/api/updateData", {
+    axios.post(`${baseUrl}updateData`, {
       id: objIdToUpdate,
       update: { csvName: updateToApply }
     });
@@ -195,6 +201,13 @@ class Cms extends Component {
     const { searchQuery } = this.state;
     this.resizeEvent();
     window.addEventListener("resize", () => this.resizeEvent());
+
+    if (
+      localStorage.getItem("username") === username &&
+      localStorage.getItem("password") === password
+    ) {
+      this.setState({ authorized: true });
+    }
 
     this.getCsvListFromDb(searchQuery);
   }
@@ -253,6 +266,17 @@ class Cms extends Component {
     this.getCsvListFromDb(text);
   };
 
+  authEvent = (str1, str2) => {
+    localStorage.setItem("username", str1);
+    localStorage.setItem("password", str2);
+
+    if (str1 === username && str2 === password) {
+      this.setState({ authorized: true });
+    } else {
+      window.alert("Wrong Credentials");
+    }
+  };
+
   resizeEvent() {
     this.setState({ height: window.innerHeight });
   }
@@ -283,10 +307,14 @@ class Cms extends Component {
   };
 
   render() {
-    const { height, csvHeader, csvData, loading } = this.state;
+    const { height, csvHeader, csvData, loading, authorized } = this.state;
     const { classes } = this.props;
 
     console.log(loading);
+
+    if (!authorized) {
+      return <Auth authEvent={this.authEvent} />;
+    }
 
     return (
       <div className={classes.root}>
