@@ -87,7 +87,7 @@ class Cms extends Component {
       height: null,
       csvHeader: null,
       csvData: null,
-      filterMethodString: "Starts With",
+      filterMethodString: "",
       filterMethod: 0,
       searchQuery: "",
       selectedItem: null,
@@ -249,7 +249,11 @@ class Cms extends Component {
         filterable: true,
         filterMethod: (filter, row) =>
           // row[filter.id].endsWith(filter.value) &&
-          row[filter.id].startsWith(filter.value)
+          // row[filter.id] && row[filter.id].startsWith(filter.value) //Starts With
+          row[filter.id] && parseInt(row[filter.id]) >= parseInt(filter.value) //Greater Than
+        // row[filter.id] && parseInt(row[filter.id]) <= parseInt(filter.value) //Lower Than
+        //row[filter.id] && row[filter.id].includes(filter.value)    //Includes
+        //row[filter.id] && row[filter.id].indexOf(filter.value) === -1  //Not Includes
       };
       columns.push(headerElement);
       accessors.push(event[0][i]);

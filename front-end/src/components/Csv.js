@@ -134,17 +134,21 @@ class Csv extends Component {
               {" "}
               Starts With
             </button>
-            <button onClick={() => this.selectFilter(1, "Ends With")}>
+            <button onClick={() => this.selectFilter(1, "Includes")}>
               {" "}
-              Ends With{" "}
+              Includes{" "}
             </button>
             <button onClick={() => this.selectFilter(2, "Not Includes")}>
               {" "}
               Not Includes{" "}
             </button>
-            <button onClick={() => this.selectFilter(3, "Exact Match")}>
+            <button onClick={() => this.selectFilter(3, "Greater Than")}>
               {" "}
-              Exact Match{" "}
+              Greater Than{" "}
+            </button>
+            <button onClick={() => this.selectFilter(4, "Lower Than")}>
+              {" "}
+              Lower Than{" "}
             </button>
           </div>
         )}
