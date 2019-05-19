@@ -96,7 +96,8 @@ class Cms extends Component {
       id: 0,
       loading: false,
       authorized: false,
-      token: ""
+      token: "",
+      event: null
     };
   }
 
@@ -232,7 +233,7 @@ class Cms extends Component {
     }
   }
 
-  uploadCsv = event => {
+  uploadCsv = (event, fileName) => {
     if (!event) {
       return;
     }
@@ -266,12 +267,19 @@ class Cms extends Component {
       csvHeader: columns,
       csvData: makeCsvData(csvBody, accessors),
       loading: false,
-      selectedItem: null
+      selectedItem: null,
+      csvName: fileName,
+      event: event
     });
   };
 
   handleDarkSideForce() {
     console.log("DARKSIDE");
+  }
+
+  changeFilterMethod(i, filterName) {
+    console.log(i);
+    console.log(filterName);
   }
 
   searchEvent = text => {
@@ -325,7 +333,16 @@ class Cms extends Component {
   };
 
   render() {
-    const { height, csvHeader, csvData, loading, authorized } = this.state;
+    const {
+      height,
+      csvHeader,
+      csvData,
+      loading,
+      authorized,
+      filterMethod,
+      filterMethodString,
+      csvName
+    } = this.state;
     const { classes } = this.props;
 
     if (!authorized) {
@@ -335,7 +352,10 @@ class Cms extends Component {
     return (
       <div className={classes.root}>
         <Grid container spacing={0} style={{ height: height }}>
-          <Grid container style={{ height: "8%", backgroundColor: "#ffffff" }}>
+          <Grid
+            container
+            style={{ height: "8%", backgroundColor: "#ffffff", zIndex: 200 }}
+          >
             <Grid item xs={4}>
               <div>
                 <img
@@ -387,11 +407,15 @@ class Cms extends Component {
                 </div>
               )}
               <Csv
+                csvName={csvName}
                 csvHeader={csvHeader}
                 csvData={csvData}
                 putDataToDB={this.putDataToDB}
                 deleteFromDB={this.deleteFromDB}
                 updateDB={this.updateDB}
+                filterMethod={filterMethod}
+                filterMethodString={filterMethodString}
+                changeFilterMethod={this.changeFilterMethod}
               />
             </Grid>
           </Grid>

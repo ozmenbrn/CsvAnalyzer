@@ -15,8 +15,9 @@ class Csv extends Component {
     this.state = {
       loading: false,
       showMenu: false,
-      filterMethodString: "Starts With",
-      filterMethod: 0
+      filterMethodString: props.filterMethodString,
+      filterMethod: props.filterMethod,
+      downloadData: []
     };
   }
 
@@ -25,15 +26,21 @@ class Csv extends Component {
   }
 
   selectFilter(i, filterMethodString) {
+    const { changeFilterMethod } = this.props;
+
     this.setState({
       showMenu: false,
       filterMethodString: filterMethodString,
       filterMethod: i
     });
+
+    changeFilterMethod(i, filterMethodString);
   }
 
+  componentDidMount() {}
+
   uploadCsv() {
-    const { putDataToDB, csvData, csvHeader } = this.props;
+    const { putDataToDB, csvData, csvHeader, csvName } = this.props;
 
     var name = prompt("Please enter name for csv");
 
@@ -46,25 +53,16 @@ class Csv extends Component {
   }
 
   downloadCsv() {
-    const { updateDB } = this.props;
-  }
-
-  render() {
-    const { showMenu, filterMethodString } = this.state;
     const { csvData, csvHeader } = this.props;
 
-    if (!csvData) {
-      return <div />;
-    }
-
-    let downloadData = [];
+    let downloadedData = [];
     let header = [];
 
     for (let j = 0; j < csvHeader.length; j++) {
       header.push(csvHeader[j].Header);
     }
 
-    downloadData.push(header);
+    downloadedData.push(header);
 
     for (let i = 0; i < csvData.length; i++) {
       let body = [];
@@ -73,7 +71,17 @@ class Csv extends Component {
         let columnName = csvHeader[j].Header;
         body.push(csvData[i][columnName]);
       }
-      downloadData.push(body);
+      downloadedData.push(body);
+    }
+    this.setState({ downloadData: downloadedData });
+  }
+
+  render() {
+    const { showMenu, filterMethodString, downloadData } = this.state;
+    const { csvData, csvHeader } = this.props;
+
+    if (!csvData) {
+      return <div />;
     }
 
     return (
