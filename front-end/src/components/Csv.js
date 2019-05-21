@@ -17,7 +17,8 @@ class Csv extends Component {
       showMenu: false,
       filterMethodString: props.filterMethodString,
       filterMethod: props.filterMethod,
-      downloadData: []
+      downloadData: [],
+      changeFilterMethod: props.changeFilterMethod
     };
   }
 
@@ -26,7 +27,7 @@ class Csv extends Component {
   }
 
   selectFilter(i, filterMethodString) {
-    const { changeFilterMethod } = this.props;
+    const { changeFilterMethod } = this.state;
 
     this.setState({
       showMenu: false,

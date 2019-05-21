@@ -238,6 +238,8 @@ class Cms extends Component {
       return;
     }
 
+    console.log("event coming throug", event[0]);
+
     let columns = [];
     let accessors = [];
     let csvBody = [];
@@ -248,16 +250,13 @@ class Cms extends Component {
         accessor: event[0][i],
         filterable: true,
         filterMethod: (filter, row) =>
-          // row[filter.id].endsWith(filter.value) &&
-          // row[filter.id] && row[filter.id].startsWith(filter.value) //Starts With
-          row[filter.id] && parseInt(row[filter.id]) >= parseInt(filter.value) //Greater Than
-        // row[filter.id] && parseInt(row[filter.id]) <= parseInt(filter.value) //Lower Than
-        //row[filter.id] && row[filter.id].includes(filter.value)    //Includes
-        //row[filter.id] && row[filter.id].indexOf(filter.value) === -1  //Not Includes
+          row[filter.id] && row[filter.id].startsWith(filter.value)
       };
       columns.push(headerElement);
       accessors.push(event[0][i]);
     }
+
+    console.log("columns", columns);
 
     for (let i = 1; i < event.length; i++) {
       let tempArray = [];
@@ -281,9 +280,112 @@ class Cms extends Component {
     console.log("DARKSIDE");
   }
 
-  changeFilterMethod(i, filterName) {
-    console.log(i);
-    console.log(filterName);
+  changeFilterMethod = (i, filterName) => {
+    const { csvHeader } = this.state;
+
+    if (!csvHeader) {
+      return;
+    }
+
+    let columns = [];
+    if (i === 0) {
+      columns = this.getFilterStartsWith();
+    } else if (i === 1) {
+      columns = this.getFilterIncludes();
+    } else if (i === 2) {
+      columns = this.getFilterNotIncludes();
+    } else if (i === 3) {
+      columns = this.getFilterBigerThan();
+    } else if (i === 4) {
+      columns = this.getFilterLowerThan();
+    }
+
+    this.setState({ csvHeader: columns });
+  };
+
+  getFilterStartsWith() {
+    const { csvHeader } = this.state;
+
+    let columns = [];
+    for (let i = 0; i < csvHeader.length; i++) {
+      let headerElement = {
+        Header: csvHeader[i].Header,
+        accessor: csvHeader[i].accessor,
+        filterable: true,
+        filterMethod: (filter, row) =>
+          row[filter.id] && row[filter.id].startsWith(filter.value)
+      };
+      columns.push(headerElement);
+    }
+    return columns;
+  }
+
+  getFilterIncludes() {
+    const { csvHeader } = this.state;
+
+    let columns = [];
+    for (let i = 0; i < csvHeader.length; i++) {
+      let headerElement = {
+        Header: csvHeader[i].Header,
+        accessor: csvHeader[i].accessor,
+        filterable: true,
+        filterMethod: (filter, row) =>
+          row[filter.id] && row[filter.id].includes(filter.value)
+      };
+      columns.push(headerElement);
+    }
+    return columns;
+  }
+
+  getFilterNotIncludes() {
+    const { csvHeader } = this.state;
+
+    let columns = [];
+    for (let i = 0; i < csvHeader.length; i++) {
+      let headerElement = {
+        Header: csvHeader[i].Header,
+        accessor: csvHeader[i].accessor,
+        filterable: true,
+        filterMethod: (filter, row) =>
+          row[filter.id] && row[filter.id].indexOf(filter.value) === -1
+      };
+      columns.push(headerElement);
+    }
+    return columns;
+  }
+
+  getFilterBigerThan() {
+    const { csvHeader } = this.state;
+
+    let columns = [];
+    for (let i = 0; i < csvHeader.length; i++) {
+      let headerElement = {
+        Header: csvHeader[i].Header,
+        accessor: csvHeader[i].accessor,
+        filterable: true,
+        filterMethod: (filter, row) =>
+          row[filter.id] && parseInt(row[filter.id]) >= parseInt(filter.value)
+      };
+      columns.push(headerElement);
+    }
+    return columns;
+  }
+
+  getFilterLowerThan() {
+    const { csvHeader } = this.state;
+
+    let columns = [];
+    for (let i = 0; i < csvHeader.length; i++) {
+      let headerElement = {
+        Header: csvHeader[i].Header,
+        accessor: csvHeader[i].accessor,
+        filterable: true,
+        filterMethod: (filter, row) =>
+          row[filter.id] && parseInt(row[filter.id]) <= parseInt(filter.value)
+      };
+      columns.push(headerElement);
+    }
+    return columns;
   }
 
   searchEvent = text => {
