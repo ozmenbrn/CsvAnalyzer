@@ -9,6 +9,8 @@ import downloadIcon from "../assets/images/download.png";
 import deleteIcon from "../assets/images/delete.jpg";
 import { CSVLink } from "react-csv";
 
+let selectTable;
+
 class Csv extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +20,8 @@ class Csv extends Component {
       filterMethodString: props.filterMethodString,
       filterMethod: props.filterMethod,
       downloadData: [],
-      changeFilterMethod: props.changeFilterMethod
+      changeFilterMethod: props.changeFilterMethod,
+      filtered: []
     };
   }
 
@@ -27,7 +30,10 @@ class Csv extends Component {
   }
 
   selectFilter(i, filterMethodString) {
-    const { changeFilterMethod } = this.state;
+    const { changeFilterMethod, filtered } = this.state;
+
+    console.log(this.selectTable.getResolvedState().sortedData);
+    console.log(this.selectTable.getResolvedState());
 
     this.setState({
       showMenu: false,
@@ -35,10 +41,8 @@ class Csv extends Component {
       filterMethod: i
     });
 
-    changeFilterMethod(i, filterMethodString);
+    changeFilterMethod(i, filterMethodString, filtered);
   }
-
-  componentDidMount() {}
 
   uploadCsv() {
     const { putDataToDB, csvData, csvHeader, csvName } = this.props;
@@ -78,12 +82,15 @@ class Csv extends Component {
   }
 
   render() {
-    const { showMenu, filterMethodString, downloadData } = this.state;
+    const { showMenu, filterMethodString, downloadData, filtered } = this.state;
     const { csvData, csvHeader } = this.props;
 
     if (!csvData) {
       return <div />;
     }
+
+    //  const currentRecords = this.selectTable.getResolvedState().sortedData;
+    // console.log(currentRecords);
 
     return (
       <div>
@@ -161,6 +168,10 @@ class Csv extends Component {
             columns={csvHeader}
             defaultPageSize={10}
             className="-striped -highlight"
+            onFilteredChange={filtered => this.setState({ filtered })}
+            ref={r => {
+              this.selectTable = r;
+            }}
           />
         )}
       </div>

@@ -280,110 +280,162 @@ class Cms extends Component {
     console.log("DARKSIDE");
   }
 
-  changeFilterMethod = (i, filterName) => {
+  changeFilterMethod = (i, filterName, filtered) => {
     const { csvHeader } = this.state;
 
     if (!csvHeader) {
       return;
     }
 
+    console.log(filtered);
+
     let columns = [];
     if (i === 0) {
-      columns = this.getFilterStartsWith();
+      columns = this.getFilterStartsWith(filtered);
     } else if (i === 1) {
-      columns = this.getFilterIncludes();
+      columns = this.getFilterIncludes(filtered);
     } else if (i === 2) {
-      columns = this.getFilterNotIncludes();
+      columns = this.getFilterNotIncludes(filtered);
     } else if (i === 3) {
-      columns = this.getFilterBigerThan();
+      columns = this.getFilterBigerThan(filtered);
     } else if (i === 4) {
-      columns = this.getFilterLowerThan();
+      columns = this.getFilterLowerThan(filtered);
     }
 
     this.setState({ csvHeader: columns });
   };
 
-  getFilterStartsWith() {
+  getFilterStartsWith(filtered) {
     const { csvHeader } = this.state;
 
     let columns = [];
     for (let i = 0; i < csvHeader.length; i++) {
-      let headerElement = {
-        Header: csvHeader[i].Header,
-        accessor: csvHeader[i].accessor,
-        filterable: true,
-        filterMethod: (filter, row) =>
-          row[filter.id] && row[filter.id].startsWith(filter.value)
-      };
-      columns.push(headerElement);
+      let isPrevious = false;
+      for (let j = 0; j < filtered.length; j++) {
+        if (filtered[j].id === csvHeader[i].Header) {
+          isPrevious = true;
+        }
+      }
+      if (isPrevious) {
+        columns.push(csvHeader[i]);
+      } else {
+        let headerElement = {
+          Header: csvHeader[i].Header,
+          accessor: csvHeader[i].accessor,
+          filterable: true,
+          filterMethod: (filter, row) =>
+            row[filter.id] && row[filter.id].startsWith(filter.value)
+        };
+        columns.push(headerElement);
+      }
     }
     return columns;
   }
 
-  getFilterIncludes() {
+  getFilterIncludes(filtered) {
     const { csvHeader } = this.state;
 
     let columns = [];
     for (let i = 0; i < csvHeader.length; i++) {
-      let headerElement = {
-        Header: csvHeader[i].Header,
-        accessor: csvHeader[i].accessor,
-        filterable: true,
-        filterMethod: (filter, row) =>
-          row[filter.id] && row[filter.id].includes(filter.value)
-      };
-      columns.push(headerElement);
+      let isPrevious = false;
+      for (let j = 0; j < filtered.length; j++) {
+        if (filtered[j].id === csvHeader[i].Header) {
+          isPrevious = true;
+        }
+      }
+      if (isPrevious) {
+        columns.push(csvHeader[i]);
+      } else {
+        let headerElement = {
+          Header: csvHeader[i].Header,
+          accessor: csvHeader[i].accessor,
+          filterable: true,
+          filterMethod: (filter, row) =>
+            row[filter.id] && row[filter.id].includes(filter.value)
+        };
+        columns.push(headerElement);
+      }
     }
     return columns;
   }
 
-  getFilterNotIncludes() {
+  getFilterNotIncludes(filtered) {
     const { csvHeader } = this.state;
 
     let columns = [];
     for (let i = 0; i < csvHeader.length; i++) {
-      let headerElement = {
-        Header: csvHeader[i].Header,
-        accessor: csvHeader[i].accessor,
-        filterable: true,
-        filterMethod: (filter, row) =>
-          row[filter.id] && row[filter.id].indexOf(filter.value) === -1
-      };
-      columns.push(headerElement);
+      let isPrevious = false;
+      for (let j = 0; j < filtered.length; j++) {
+        if (filtered[j].id === csvHeader[i].Header) {
+          isPrevious = true;
+        }
+      }
+      if (isPrevious) {
+        columns.push(csvHeader[i]);
+      } else {
+        let headerElement = {
+          Header: csvHeader[i].Header,
+          accessor: csvHeader[i].accessor,
+          filterable: true,
+          filterMethod: (filter, row) =>
+            row[filter.id] && row[filter.id].indexOf(filter.value) === -1
+        };
+        columns.push(headerElement);
+      }
     }
     return columns;
   }
 
-  getFilterBigerThan() {
+  getFilterBigerThan(filtered) {
     const { csvHeader } = this.state;
 
     let columns = [];
     for (let i = 0; i < csvHeader.length; i++) {
-      let headerElement = {
-        Header: csvHeader[i].Header,
-        accessor: csvHeader[i].accessor,
-        filterable: true,
-        filterMethod: (filter, row) =>
-          row[filter.id] && parseInt(row[filter.id]) >= parseInt(filter.value)
-      };
-      columns.push(headerElement);
+      let isPrevious = false;
+      for (let j = 0; j < filtered.length; j++) {
+        if (filtered[j].id === csvHeader[i].Header) {
+          isPrevious = true;
+        }
+      }
+      if (isPrevious) {
+        columns.push(csvHeader[i]);
+      } else {
+        let headerElement = {
+          Header: csvHeader[i].Header,
+          accessor: csvHeader[i].accessor,
+          filterable: true,
+          filterMethod: (filter, row) =>
+            row[filter.id] && parseInt(row[filter.id]) >= parseInt(filter.value)
+        };
+        columns.push(headerElement);
+      }
     }
     return columns;
   }
 
-  getFilterLowerThan() {
+  getFilterLowerThan(filtered) {
     const { csvHeader } = this.state;
 
     let columns = [];
     for (let i = 0; i < csvHeader.length; i++) {
-      let headerElement = {
-        Header: csvHeader[i].Header,
-        accessor: csvHeader[i].accessor,
-        filterable: true,
-        filterMethod: (filter, row) =>
-          row[filter.id] && parseInt(row[filter.id]) <= parseInt(filter.value)
-      };
-      columns.push(headerElement);
+      let isPrevious = false;
+      for (let j = 0; j < filtered.length; j++) {
+        if (filtered[j].id === csvHeader[i].Header) {
+          isPrevious = true;
+        }
+      }
+      if (isPrevious) {
+        columns.push(csvHeader[i]);
+      } else {
+        let headerElement = {
+          Header: csvHeader[i].Header,
+          accessor: csvHeader[i].accessor,
+          filterable: true,
+          filterMethod: (filter, row) =>
+            row[filter.id] && parseInt(row[filter.id]) <= parseInt(filter.value)
+        };
+        columns.push(headerElement);
+      }
     }
     return columns;
   }
