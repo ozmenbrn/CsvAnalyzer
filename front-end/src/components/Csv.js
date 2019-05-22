@@ -9,8 +9,6 @@ import downloadIcon from "../assets/images/download.png";
 import deleteIcon from "../assets/images/delete.jpg";
 import { CSVLink } from "react-csv";
 
-let selectTable;
-
 class Csv extends Component {
   constructor(props) {
     super(props);
@@ -32,9 +30,6 @@ class Csv extends Component {
   selectFilter(i, filterMethodString) {
     const { changeFilterMethod, filtered } = this.state;
 
-    console.log(this.selectTable.getResolvedState().sortedData);
-    console.log(this.selectTable.getResolvedState());
-
     this.setState({
       showMenu: false,
       filterMethodString: filterMethodString,
@@ -45,11 +40,20 @@ class Csv extends Component {
   }
 
   uploadCsv() {
-    const { putDataToDB, csvData, csvHeader, csvName } = this.props;
+    const { putDataToDB, csvHeader } = this.props;
 
     var name = prompt("Please enter name for csv");
 
-    putDataToDB(name, csvData, csvHeader);
+    var visibleModels = this.selectTable.getResolvedState().sortedData;
+
+    for (let i = 0; i < visibleModels.length; i++) {
+      delete visibleModels[i]["_index"];
+      delete visibleModels[i]["_original"];
+      delete visibleModels[i]["_nestingLevel"];
+      delete visibleModels[i]["_subRows"];
+    }
+
+    putDataToDB(name, visibleModels, csvHeader);
   }
 
   deleteCsv() {
@@ -58,39 +62,27 @@ class Csv extends Component {
   }
 
   downloadCsv() {
-    const { csvData, csvHeader } = this.props;
+    var downloadedData = this.selectTable.getResolvedState().sortedData;
 
-    let downloadedData = [];
-    let header = [];
-
-    for (let j = 0; j < csvHeader.length; j++) {
-      header.push(csvHeader[j].Header);
+    for (let i = 0; i < downloadedData.length; i++) {
+      delete downloadedData[i]["_index"];
+      delete downloadedData[i]["_original"];
+      delete downloadedData[i]["_nestingLevel"];
+      delete downloadedData[i]["_subRows"];
     }
 
-    downloadedData.push(header);
-
-    for (let i = 0; i < csvData.length; i++) {
-      let body = [];
-
-      for (let j = 0; j < csvHeader.length; j++) {
-        let columnName = csvHeader[j].Header;
-        body.push(csvData[i][columnName]);
-      }
-      downloadedData.push(body);
-    }
     this.setState({ downloadData: downloadedData });
   }
 
   render() {
-    const { showMenu, filterMethodString, downloadData, filtered } = this.state;
+    const { showMenu, filterMethodString, downloadData } = this.state;
     const { csvData, csvHeader } = this.props;
 
     if (!csvData) {
       return <div />;
     }
 
-    //  const currentRecords = this.selectTable.getResolvedState().sortedData;
-    // console.log(currentRecords);
+    console.log("RENDERUNG");
 
     return (
       <div>

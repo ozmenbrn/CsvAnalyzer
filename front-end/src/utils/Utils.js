@@ -20,8 +20,7 @@ const newRow = (csvElement, csvHeader) => {
 export function makeCsvData(csvBody, csvHeader) {
   return range(csvBody.length).map(d => {
     return {
-      ...newRow(csvBody[d], csvHeader),
-      children: range(10).map(newRow)
+      ...newRow(csvBody[d], csvHeader)
     };
   });
 }

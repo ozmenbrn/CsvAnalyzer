@@ -18,8 +18,8 @@ const token = username + password;
 
 // (optional) only made for logging and
 // bodyParser, parses the request body to be a readable json format
-app.use(bodyParser.urlencoded({ extended: false, limit: "50MB" }));
-app.use(bodyParser.json({ limit: "50MB" }));
+app.use(bodyParser.urlencoded({ extended: false, limit: "150MB" }));
+app.use(bodyParser.json({ limit: "150MB" }));
 app.use(logger("dev"));
 
 function decrpytHash(text) {

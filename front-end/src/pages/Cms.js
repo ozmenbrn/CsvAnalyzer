@@ -238,8 +238,6 @@ class Cms extends Component {
       return;
     }
 
-    console.log("event coming throug", event[0]);
-
     let columns = [];
     let accessors = [];
     let csvBody = [];
@@ -255,8 +253,6 @@ class Cms extends Component {
       columns.push(headerElement);
       accessors.push(event[0][i]);
     }
-
-    console.log("columns", columns);
 
     for (let i = 1; i < event.length; i++) {
       let tempArray = [];
@@ -286,8 +282,6 @@ class Cms extends Component {
     if (!csvHeader) {
       return;
     }
-
-    console.log(filtered);
 
     let columns = [];
     if (i === 0) {
