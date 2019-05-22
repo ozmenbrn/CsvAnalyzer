@@ -3,327 +3,147 @@
     "columns": [
       {
         "Header": "Video ID",
-        "accessor": "Video ID",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Video ID"
       },
       {
         "Header": "Content Type",
-        "accessor": "Content Type",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Content Type"
       },
       {
         "Header": "Policy",
-        "accessor": "Policy",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Policy"
       },
       {
         "Header": "Video Title",
-        "accessor": "Video Title",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Video Title"
       },
       {
         "Header": "Video Duration (sec)",
-        "accessor": "Video Duration (sec)",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Video Duration (sec)"
       },
       {
         "Header": "Username",
-        "accessor": "Username",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Username"
       },
       {
         "Header": "Uploader",
-        "accessor": "Uploader",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Uploader"
       },
       {
         "Header": "Channel Display Name",
-        "accessor": "Channel Display Name",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Channel Display Name"
       },
       {
         "Header": "Channel ID",
-        "accessor": "Channel ID",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Channel ID"
       },
       {
         "Header": "Claim Type",
-        "accessor": "Claim Type",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Claim Type"
       },
       {
         "Header": "Claim Origin",
-        "accessor": "Claim Origin",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Claim Origin"
       },
       {
         "Header": "Multiple Claims?",
-        "accessor": "Multiple Claims?",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Multiple Claims?"
       },
       {
         "Header": "Category",
-        "accessor": "Category",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Category"
       },
       {
         "Header": "Asset ID",
-        "accessor": "Asset ID",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Asset ID"
       },
       {
         "Header": "Asset Labels",
-        "accessor": "Asset Labels",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Asset Labels"
       },
       {
         "Header": "Asset Channel ID",
-        "accessor": "Asset Channel ID",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Asset Channel ID"
       },
       {
         "Header": "Custom ID",
-        "accessor": "Custom ID",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Custom ID"
       },
       {
         "Header": "Owned Views",
-        "accessor": "Owned Views",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Owned Views"
       },
       {
         "Header": "Owned Views : Watch Page",
-        "accessor": "Owned Views : Watch Page",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Owned Views : Watch Page"
       },
       {
         "Header": "Owned Views : Embedded Player",
-        "accessor": "Owned Views : Embedded Player",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Owned Views : Embedded Player"
       },
       {
         "Header": "Owned Views : Channel Page",
-        "accessor": "Owned Views : Channel Page",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Owned Views : Channel Page"
       },
       {
         "Header": "Owned Views : Live",
-        "accessor": "Owned Views : Live",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Owned Views : Live"
       },
       {
         "Header": "Owned Views : On Demand",
-        "accessor": "Owned Views : On Demand",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Owned Views : On Demand"
       },
       {
         "Header": "Owned Views : Ad-Enabled",
-        "accessor": "Owned Views : Ad-Enabled",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Owned Views : Ad-Enabled"
       },
       {
         "Header": "Owned Views : Ad-Requested",
-        "accessor": "Owned Views : Ad-Requested",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Owned Views : Ad-Requested"
       },
       {
         "Header": "YouTube Revenue Split : AdSense Served YouTube Sold",
-        "accessor": "YouTube Revenue Split : AdSense Served YouTube Sold",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "YouTube Revenue Split : AdSense Served YouTube Sold"
       },
       {
         "Header": "YouTube Revenue Split : DoubleClick Served YouTube Sold",
-        "accessor": "YouTube Revenue Split : DoubleClick Served YouTube Sold",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "YouTube Revenue Split : DoubleClick Served YouTube Sold"
       },
       {
         "Header": "YouTube Revenue Split : DoubleClick Served Partner Sold",
-        "accessor": "YouTube Revenue Split : DoubleClick Served Partner Sold",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "YouTube Revenue Split : DoubleClick Served Partner Sold"
       },
       {
         "Header": "YouTube Revenue Split : Partner Served Partner Sold",
-        "accessor": "YouTube Revenue Split : Partner Served Partner Sold",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "YouTube Revenue Split : Partner Served Partner Sold"
       },
       {
         "Header": "YouTube Revenue Split",
-        "accessor": "YouTube Revenue Split",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "YouTube Revenue Split"
       },
       {
         "Header": "Partner Revenue : AdSense Served YouTube Sold",
-        "accessor": "Partner Revenue : AdSense Served YouTube Sold",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Partner Revenue : AdSense Served YouTube Sold"
       },
       {
         "Header": "Partner Revenue : DoubleClick Served YouTube Sold",
-        "accessor": "Partner Revenue : DoubleClick Served YouTube Sold",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Partner Revenue : DoubleClick Served YouTube Sold"
       },
       {
         "Header": "Partner Revenue : DoubleClick Served Partner Sold",
-        "accessor": "Partner Revenue : DoubleClick Served Partner Sold",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Partner Revenue : DoubleClick Served Partner Sold"
       },
       {
         "Header": "Partner Revenue : Partner Served Partner Sold",
-        "accessor": "Partner Revenue : Partner Served Partner Sold",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Partner Revenue : Partner Served Partner Sold"
       },
       {
         "Header": "Partner Revenue",
-        "accessor": "Partner Revenue",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Partner Revenue"
       },
       {
         "Header": "Estimated RPM",
-        "accessor": "Estimated RPM",
-        "filterable": true,
-        "style": {
-          "borderRadius": "5px",
-          "borderColor": "black"
-        }
+        "accessor": "Estimated RPM"
       }
     ],
     "body": [
@@ -708,8 +528,8 @@
         "Estimated RPM": "0"
       }
     ],
-    "_id": "5ce5b61586ace6048e54fc66",
-    "name": "12",
+    "_id": "5ce5b9e3d3bdee095e5f6757",
+    "name": "123",
     "id": 0
   }
 }

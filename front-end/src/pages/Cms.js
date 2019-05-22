@@ -177,6 +177,10 @@ class Cms extends Component {
   deleteFromDB = () => {
     const { csvName, searchQuery, token } = this.state;
 
+    if (!window.confirm("Are you sure to delete csv?")) {
+      return;
+    }
+
     this.setState({ loading: true });
 
     let hashString = token + moment().unix();
