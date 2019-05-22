@@ -149,7 +149,7 @@ class Cms extends Component {
       })
       .then(response => {
         this.getCsvListFromDb(searchQuery);
-        this.setState({ loading: false });
+        this.setState({ loading: false, selectedItem: null });
       })
       .catch(err => {
         console.log(err);
@@ -245,10 +245,7 @@ class Cms extends Component {
     for (let i = 0; i < event[0].length; i++) {
       let headerElement = {
         Header: event[0][i],
-        accessor: event[0][i],
-        filterable: true,
-        filterMethod: (filter, row) =>
-          row[filter.id] && row[filter.id].startsWith(filter.value)
+        accessor: event[0][i]
       };
       columns.push(headerElement);
       accessors.push(event[0][i]);
@@ -317,6 +314,10 @@ class Cms extends Component {
           Header: csvHeader[i].Header,
           accessor: csvHeader[i].accessor,
           filterable: true,
+          style: {
+            borderRadius: "5px",
+            borderColor: "black"
+          },
           filterMethod: (filter, row) =>
             row[filter.id] && row[filter.id].startsWith(filter.value)
         };
@@ -344,6 +345,10 @@ class Cms extends Component {
           Header: csvHeader[i].Header,
           accessor: csvHeader[i].accessor,
           filterable: true,
+          style: {
+            borderRadius: "5px",
+            borderColor: "green"
+          },
           filterMethod: (filter, row) =>
             row[filter.id] && row[filter.id].includes(filter.value)
         };
@@ -371,6 +376,10 @@ class Cms extends Component {
           Header: csvHeader[i].Header,
           accessor: csvHeader[i].accessor,
           filterable: true,
+          style: {
+            borderRadius: "5px",
+            borderColor: "red"
+          },
           filterMethod: (filter, row) =>
             row[filter.id] && row[filter.id].indexOf(filter.value) === -1
         };
@@ -398,6 +407,10 @@ class Cms extends Component {
           Header: csvHeader[i].Header,
           accessor: csvHeader[i].accessor,
           filterable: true,
+          style: {
+            borderRadius: "5px",
+            borderColor: "blue"
+          },
           filterMethod: (filter, row) =>
             row[filter.id] && parseInt(row[filter.id]) >= parseInt(filter.value)
         };
@@ -425,6 +438,10 @@ class Cms extends Component {
           Header: csvHeader[i].Header,
           accessor: csvHeader[i].accessor,
           filterable: true,
+          style: {
+            borderRadius: "5px",
+            borderColor: "purple"
+          },
           filterMethod: (filter, row) =>
             row[filter.id] && parseInt(row[filter.id]) <= parseInt(filter.value)
         };

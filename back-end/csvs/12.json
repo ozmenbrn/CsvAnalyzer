@@ -1,0 +1,715 @@
+{
+  "data": {
+    "columns": [
+      {
+        "Header": "Video ID",
+        "accessor": "Video ID",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Content Type",
+        "accessor": "Content Type",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Policy",
+        "accessor": "Policy",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Video Title",
+        "accessor": "Video Title",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Video Duration (sec)",
+        "accessor": "Video Duration (sec)",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Username",
+        "accessor": "Username",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Uploader",
+        "accessor": "Uploader",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Channel Display Name",
+        "accessor": "Channel Display Name",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Channel ID",
+        "accessor": "Channel ID",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Claim Type",
+        "accessor": "Claim Type",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Claim Origin",
+        "accessor": "Claim Origin",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Multiple Claims?",
+        "accessor": "Multiple Claims?",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Category",
+        "accessor": "Category",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Asset ID",
+        "accessor": "Asset ID",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Asset Labels",
+        "accessor": "Asset Labels",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Asset Channel ID",
+        "accessor": "Asset Channel ID",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Custom ID",
+        "accessor": "Custom ID",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Owned Views",
+        "accessor": "Owned Views",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Owned Views : Watch Page",
+        "accessor": "Owned Views : Watch Page",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Owned Views : Embedded Player",
+        "accessor": "Owned Views : Embedded Player",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Owned Views : Channel Page",
+        "accessor": "Owned Views : Channel Page",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Owned Views : Live",
+        "accessor": "Owned Views : Live",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Owned Views : On Demand",
+        "accessor": "Owned Views : On Demand",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Owned Views : Ad-Enabled",
+        "accessor": "Owned Views : Ad-Enabled",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Owned Views : Ad-Requested",
+        "accessor": "Owned Views : Ad-Requested",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "YouTube Revenue Split : AdSense Served YouTube Sold",
+        "accessor": "YouTube Revenue Split : AdSense Served YouTube Sold",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "YouTube Revenue Split : DoubleClick Served YouTube Sold",
+        "accessor": "YouTube Revenue Split : DoubleClick Served YouTube Sold",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "YouTube Revenue Split : DoubleClick Served Partner Sold",
+        "accessor": "YouTube Revenue Split : DoubleClick Served Partner Sold",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "YouTube Revenue Split : Partner Served Partner Sold",
+        "accessor": "YouTube Revenue Split : Partner Served Partner Sold",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "YouTube Revenue Split",
+        "accessor": "YouTube Revenue Split",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Partner Revenue : AdSense Served YouTube Sold",
+        "accessor": "Partner Revenue : AdSense Served YouTube Sold",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Partner Revenue : DoubleClick Served YouTube Sold",
+        "accessor": "Partner Revenue : DoubleClick Served YouTube Sold",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Partner Revenue : DoubleClick Served Partner Sold",
+        "accessor": "Partner Revenue : DoubleClick Served Partner Sold",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Partner Revenue : Partner Served Partner Sold",
+        "accessor": "Partner Revenue : Partner Served Partner Sold",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Partner Revenue",
+        "accessor": "Partner Revenue",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      },
+      {
+        "Header": "Estimated RPM",
+        "accessor": "Estimated RPM",
+        "filterable": true,
+        "style": {
+          "borderRadius": "5px",
+          "borderColor": "black"
+        }
+      }
+    ],
+    "body": [
+      {
+        "Video ID": "78h2gvU7BgE",
+        "Content Type": "Partner-provided",
+        "Policy": "monetize",
+        "Video Title": "Canelo vs Golovkin ITC Recap",
+        "Video Duration (sec)": "755",
+        "Username": "Knockouttv",
+        "Uploader": "inthiscornertv",
+        "Channel Display Name": "In This Corner TV",
+        "Channel ID": "K57B0e592xrcTDMdVNNubA",
+        "Claim Type": "Audio-Visual",
+        "Claim Origin": "Web Upload",
+        "Multiple Claims?": "no",
+        "Category": "sports",
+        "Asset ID": "A610369945680036",
+        "Asset Labels": "",
+        "Asset Channel ID": "K57B0e592xrcTDMdVNNubA",
+        "Custom ID": "78h2gvU7BgE",
+        "Owned Views": "3",
+        "Owned Views : Watch Page": "3",
+        "Owned Views : Embedded Player": "0",
+        "Owned Views : Channel Page": "0",
+        "Owned Views : Live": "0",
+        "Owned Views : On Demand": "3",
+        "Owned Views : Ad-Enabled": "3",
+        "Owned Views : Ad-Requested": "0",
+        "YouTube Revenue Split : AdSense Served YouTube Sold": "0",
+        "YouTube Revenue Split : DoubleClick Served YouTube Sold": "0",
+        "YouTube Revenue Split : DoubleClick Served Partner Sold": "0",
+        "YouTube Revenue Split : Partner Served Partner Sold": "0",
+        "YouTube Revenue Split": "0",
+        "Partner Revenue : AdSense Served YouTube Sold": "0",
+        "Partner Revenue : DoubleClick Served YouTube Sold": "0",
+        "Partner Revenue : DoubleClick Served Partner Sold": "0",
+        "Partner Revenue : Partner Served Partner Sold": "0",
+        "Partner Revenue": "0",
+        "Estimated RPM": "0"
+      },
+      {
+        "Video ID": "JLesMSxi2Oc",
+        "Content Type": "Partner-provided",
+        "Policy": "monetize",
+        "Video Title": "UK's Strongest Man - 2009 Episode 5 Part 1",
+        "Video Duration (sec)": "755",
+        "Username": "Knockouttv",
+        "Uploader": "strongmantv",
+        "Channel Display Name": "strongmantv",
+        "Channel ID": "IuPffw0Xlr6EeNBvgEP_qA",
+        "Claim Type": "Audio-Visual",
+        "Claim Origin": "Web Upload",
+        "Multiple Claims?": "no",
+        "Category": "entertainment",
+        "Asset ID": "A520970478129089",
+        "Asset Labels": "UCIuPffw0Xlr6EeNBvgEP_qA",
+        "Asset Channel ID": "IuPffw0Xlr6EeNBvgEP_qA",
+        "Custom ID": "",
+        "Owned Views": "2",
+        "Owned Views : Watch Page": "2",
+        "Owned Views : Embedded Player": "0",
+        "Owned Views : Channel Page": "0",
+        "Owned Views : Live": "0",
+        "Owned Views : On Demand": "2",
+        "Owned Views : Ad-Enabled": "2",
+        "Owned Views : Ad-Requested": "0",
+        "YouTube Revenue Split : AdSense Served YouTube Sold": "0",
+        "YouTube Revenue Split : DoubleClick Served YouTube Sold": "0",
+        "YouTube Revenue Split : DoubleClick Served Partner Sold": "0",
+        "YouTube Revenue Split : Partner Served Partner Sold": "0",
+        "YouTube Revenue Split": "0",
+        "Partner Revenue : AdSense Served YouTube Sold": "0",
+        "Partner Revenue : DoubleClick Served YouTube Sold": "0",
+        "Partner Revenue : DoubleClick Served Partner Sold": "0",
+        "Partner Revenue : Partner Served Partner Sold": "0",
+        "Partner Revenue": "0",
+        "Estimated RPM": "0"
+      },
+      {
+        "Video ID": "NSJbF9UUCC4",
+        "Content Type": "UGC",
+        "Policy": "monetize",
+        "Video Title": "Tour 2 - JOHN WALTON (ENG) V  MARTIN ADAMS (ENG)",
+        "Video Duration (sec)": "755",
+        "Username": "Knockouttv",
+        "Uploader": "NBDForg",
+        "Channel Display Name": "NBDForg",
+        "Channel ID": "X6coQsd-tXyA8q2BREJxMA",
+        "Claim Type": "Audio-Visual",
+        "Claim Origin": "Video Match",
+        "Multiple Claims?": "no",
+        "Category": "sports",
+        "Asset ID": "A244286100611347",
+        "Asset Labels": "UC92zCMeQJdH8ChEamXZxSeQ",
+        "Asset Channel ID": "92zCMeQJdH8ChEamXZxSeQ",
+        "Custom ID": "Pl3pFOPBrw8",
+        "Owned Views": "12",
+        "Owned Views : Watch Page": "12",
+        "Owned Views : Embedded Player": "0",
+        "Owned Views : Channel Page": "0",
+        "Owned Views : Live": "0",
+        "Owned Views : On Demand": "12",
+        "Owned Views : Ad-Enabled": "12",
+        "Owned Views : Ad-Requested": "0",
+        "YouTube Revenue Split : AdSense Served YouTube Sold": "0",
+        "YouTube Revenue Split : DoubleClick Served YouTube Sold": "0",
+        "YouTube Revenue Split : DoubleClick Served Partner Sold": "0",
+        "YouTube Revenue Split : Partner Served Partner Sold": "0",
+        "YouTube Revenue Split": "0",
+        "Partner Revenue : AdSense Served YouTube Sold": "0",
+        "Partner Revenue : DoubleClick Served YouTube Sold": "0",
+        "Partner Revenue : DoubleClick Served Partner Sold": "0",
+        "Partner Revenue : Partner Served Partner Sold": "0",
+        "Partner Revenue": "0",
+        "Estimated RPM": "0"
+      },
+      {
+        "Video ID": "Oinuk8I_brQ",
+        "Content Type": "UGC",
+        "Policy": "monetize",
+        "Video Title": "© Nova ESTRELA do MMA humilha mais um rival; assista ©",
+        "Video Duration (sec)": "755",
+        "Username": "Knockouttv",
+        "Uploader": "TheMUNDONOVO",
+        "Channel Display Name": "TheMUNDONOVO",
+        "Channel ID": "KyUfgE7GWe0Yzcu33BiWcw",
+        "Claim Type": "Audio-Visual",
+        "Claim Origin": "Video Match",
+        "Multiple Claims?": "no",
+        "Category": "sports",
+        "Asset ID": "A120143730175123",
+        "Asset Labels": "UC8irOcdoPV-8UT1WqhwRKYQ",
+        "Asset Channel ID": "8irOcdoPV-8UT1WqhwRKYQ",
+        "Custom ID": "",
+        "Owned Views": "16",
+        "Owned Views : Watch Page": "16",
+        "Owned Views : Embedded Player": "0",
+        "Owned Views : Channel Page": "0",
+        "Owned Views : Live": "0",
+        "Owned Views : On Demand": "16",
+        "Owned Views : Ad-Enabled": "16",
+        "Owned Views : Ad-Requested": "0",
+        "YouTube Revenue Split : AdSense Served YouTube Sold": "0",
+        "YouTube Revenue Split : DoubleClick Served YouTube Sold": "0",
+        "YouTube Revenue Split : DoubleClick Served Partner Sold": "0",
+        "YouTube Revenue Split : Partner Served Partner Sold": "0",
+        "YouTube Revenue Split": "0",
+        "Partner Revenue : AdSense Served YouTube Sold": "0",
+        "Partner Revenue : DoubleClick Served YouTube Sold": "0",
+        "Partner Revenue : DoubleClick Served Partner Sold": "0",
+        "Partner Revenue : Partner Served Partner Sold": "0",
+        "Partner Revenue": "0",
+        "Estimated RPM": "0"
+      },
+      {
+        "Video ID": "QqlUA7s73T8",
+        "Content Type": "UGC",
+        "Policy": "monetize",
+        "Video Title": "Courtney Burton vs. Ebo Elder (1/5)",
+        "Video Duration (sec)": "755",
+        "Username": "Knockouttv",
+        "Uploader": "BoxingFan91",
+        "Channel Display Name": "BoxingFan91",
+        "Channel ID": "FV0r5BgUJTnQ6HhZ4Fv_Iw",
+        "Claim Type": "Audio-Visual",
+        "Claim Origin": "Video Match",
+        "Multiple Claims?": "no",
+        "Category": "sports",
+        "Asset ID": "A351032615362903",
+        "Asset Labels": "UCj3XrWz2sSh80D77iv9WAdw",
+        "Asset Channel ID": "j3XrWz2sSh80D77iv9WAdw",
+        "Custom ID": "YntGlBxpUPg",
+        "Owned Views": "50",
+        "Owned Views : Watch Page": "48",
+        "Owned Views : Embedded Player": "2",
+        "Owned Views : Channel Page": "0",
+        "Owned Views : Live": "0",
+        "Owned Views : On Demand": "50",
+        "Owned Views : Ad-Enabled": "50",
+        "Owned Views : Ad-Requested": "0",
+        "YouTube Revenue Split : AdSense Served YouTube Sold": "0",
+        "YouTube Revenue Split : DoubleClick Served YouTube Sold": "0",
+        "YouTube Revenue Split : DoubleClick Served Partner Sold": "0",
+        "YouTube Revenue Split : Partner Served Partner Sold": "0",
+        "YouTube Revenue Split": "0",
+        "Partner Revenue : AdSense Served YouTube Sold": "0",
+        "Partner Revenue : DoubleClick Served YouTube Sold": "0",
+        "Partner Revenue : DoubleClick Served Partner Sold": "0",
+        "Partner Revenue : Partner Served Partner Sold": "0",
+        "Partner Revenue": "0",
+        "Estimated RPM": "0"
+      },
+      {
+        "Video ID": "VnlQhf7XiNo",
+        "Content Type": "UGC",
+        "Policy": "monetize",
+        "Video Title": "08.12.18 День у мегаполісі",
+        "Video Duration (sec)": "7556",
+        "Username": "Knockouttv",
+        "Uploader": "kievchannel",
+        "Channel Display Name": "Телеканал Київ",
+        "Channel ID": "cjer2fP4gm72s__h8nqYIQ",
+        "Claim Type": "Visual",
+        "Claim Origin": "Video Match",
+        "Multiple Claims?": "no",
+        "Category": "nonprofits",
+        "Asset ID": "A430660788675997",
+        "Asset Labels": "UCEVVENPnHv-kcp2PqQuJvHg",
+        "Asset Channel ID": "EVVENPnHv-kcp2PqQuJvHg",
+        "Custom ID": "5S18Iy3k2BA",
+        "Owned Views": "6",
+        "Owned Views : Watch Page": "6",
+        "Owned Views : Embedded Player": "0",
+        "Owned Views : Channel Page": "0",
+        "Owned Views : Live": "0",
+        "Owned Views : On Demand": "6",
+        "Owned Views : Ad-Enabled": "6",
+        "Owned Views : Ad-Requested": "0",
+        "YouTube Revenue Split : AdSense Served YouTube Sold": "0",
+        "YouTube Revenue Split : DoubleClick Served YouTube Sold": "0",
+        "YouTube Revenue Split : DoubleClick Served Partner Sold": "0",
+        "YouTube Revenue Split : Partner Served Partner Sold": "0",
+        "YouTube Revenue Split": "0",
+        "Partner Revenue : AdSense Served YouTube Sold": "0",
+        "Partner Revenue : DoubleClick Served YouTube Sold": "0",
+        "Partner Revenue : DoubleClick Served Partner Sold": "0",
+        "Partner Revenue : Partner Served Partner Sold": "0",
+        "Partner Revenue": "0",
+        "Estimated RPM": "0"
+      },
+      {
+        "Video ID": "auZn3gDyK7o",
+        "Content Type": "UGC",
+        "Policy": "monetize",
+        "Video Title": "Thực chiến đỉnh cao Michael page.",
+        "Video Duration (sec)": "755",
+        "Username": "Knockouttv",
+        "Uploader": "",
+        "Channel Display Name": "Võ Thực Chiến",
+        "Channel ID": "iPfo65NpPtx1tQgLAvmQvA",
+        "Claim Type": "Audio-Visual",
+        "Claim Origin": "Video Match",
+        "Multiple Claims?": "no",
+        "Category": "people",
+        "Asset ID": "A120143730175123",
+        "Asset Labels": "UC8irOcdoPV-8UT1WqhwRKYQ",
+        "Asset Channel ID": "8irOcdoPV-8UT1WqhwRKYQ",
+        "Custom ID": "",
+        "Owned Views": "4",
+        "Owned Views : Watch Page": "4",
+        "Owned Views : Embedded Player": "0",
+        "Owned Views : Channel Page": "0",
+        "Owned Views : Live": "0",
+        "Owned Views : On Demand": "4",
+        "Owned Views : Ad-Enabled": "4",
+        "Owned Views : Ad-Requested": "0",
+        "YouTube Revenue Split : AdSense Served YouTube Sold": "0",
+        "YouTube Revenue Split : DoubleClick Served YouTube Sold": "0",
+        "YouTube Revenue Split : DoubleClick Served Partner Sold": "0",
+        "YouTube Revenue Split : Partner Served Partner Sold": "0",
+        "YouTube Revenue Split": "0",
+        "Partner Revenue : AdSense Served YouTube Sold": "0",
+        "Partner Revenue : DoubleClick Served YouTube Sold": "0",
+        "Partner Revenue : DoubleClick Served Partner Sold": "0",
+        "Partner Revenue : Partner Served Partner Sold": "0",
+        "Partner Revenue": "0",
+        "Estimated RPM": "0"
+      },
+      {
+        "Video ID": "dJ2xDia-BTQ",
+        "Content Type": "Partner-provided",
+        "Policy": "monetize",
+        "Video Title": "UCMMA: Ultimate Challenge - UCMMA 27: Michael Page Vs Miguel Bernad",
+        "Video Duration (sec)": "755",
+        "Username": "Knockouttv",
+        "Uploader": "UltimateChallengeMMA",
+        "Channel Display Name": "UCMMA",
+        "Channel ID": "8irOcdoPV-8UT1WqhwRKYQ",
+        "Claim Type": "Audio-Visual",
+        "Claim Origin": "Descriptive Search",
+        "Multiple Claims?": "no",
+        "Category": "entertainment",
+        "Asset ID": "A120143730175123",
+        "Asset Labels": "UC8irOcdoPV-8UT1WqhwRKYQ",
+        "Asset Channel ID": "8irOcdoPV-8UT1WqhwRKYQ",
+        "Custom ID": "",
+        "Owned Views": "216",
+        "Owned Views : Watch Page": "214",
+        "Owned Views : Embedded Player": "1",
+        "Owned Views : Channel Page": "0",
+        "Owned Views : Live": "0",
+        "Owned Views : On Demand": "216",
+        "Owned Views : Ad-Enabled": "216",
+        "Owned Views : Ad-Requested": "0",
+        "YouTube Revenue Split : AdSense Served YouTube Sold": "0",
+        "YouTube Revenue Split : DoubleClick Served YouTube Sold": "0",
+        "YouTube Revenue Split : DoubleClick Served Partner Sold": "0",
+        "YouTube Revenue Split : Partner Served Partner Sold": "0",
+        "YouTube Revenue Split": "0",
+        "Partner Revenue : AdSense Served YouTube Sold": "0",
+        "Partner Revenue : DoubleClick Served YouTube Sold": "0",
+        "Partner Revenue : DoubleClick Served Partner Sold": "0",
+        "Partner Revenue : Partner Served Partner Sold": "0",
+        "Partner Revenue": "0",
+        "Estimated RPM": "0"
+      },
+      {
+        "Video ID": "qFzkeKDCTA0",
+        "Content Type": "UGC",
+        "Policy": "monetize",
+        "Video Title": "MMA - Michael \"Venom\" Page vs. Miguel Bernard",
+        "Video Duration (sec)": "755",
+        "Username": "Knockouttv",
+        "Uploader": "",
+        "Channel Display Name": "Super Sumo Penguin",
+        "Channel ID": "Om577Z1iK3MxnwHLWO81Bg",
+        "Claim Type": "Audio-Visual",
+        "Claim Origin": "Video Match",
+        "Multiple Claims?": "no",
+        "Category": "sports",
+        "Asset ID": "A120143730175123",
+        "Asset Labels": "UC8irOcdoPV-8UT1WqhwRKYQ",
+        "Asset Channel ID": "8irOcdoPV-8UT1WqhwRKYQ",
+        "Custom ID": "",
+        "Owned Views": "3052",
+        "Owned Views : Watch Page": "3044",
+        "Owned Views : Embedded Player": "5",
+        "Owned Views : Channel Page": "0",
+        "Owned Views : Live": "0",
+        "Owned Views : On Demand": "3052",
+        "Owned Views : Ad-Enabled": "3052",
+        "Owned Views : Ad-Requested": "0",
+        "YouTube Revenue Split : AdSense Served YouTube Sold": "0",
+        "YouTube Revenue Split : DoubleClick Served YouTube Sold": "0",
+        "YouTube Revenue Split : DoubleClick Served Partner Sold": "0",
+        "YouTube Revenue Split : Partner Served Partner Sold": "0",
+        "YouTube Revenue Split": "0",
+        "Partner Revenue : AdSense Served YouTube Sold": "0",
+        "Partner Revenue : DoubleClick Served YouTube Sold": "0",
+        "Partner Revenue : DoubleClick Served Partner Sold": "0",
+        "Partner Revenue : Partner Served Partner Sold": "0",
+        "Partner Revenue": "0",
+        "Estimated RPM": "0"
+      },
+      {
+        "Video ID": "qFzkeKDCTA0",
+        "Content Type": "UGC",
+        "Policy": "track",
+        "Video Title": "MMA - Michael \"Venom\" Page vs. Miguel Bernard",
+        "Video Duration (sec)": "755",
+        "Username": "Knockouttv",
+        "Uploader": "",
+        "Channel Display Name": "Super Sumo Penguin",
+        "Channel ID": "Om577Z1iK3MxnwHLWO81Bg",
+        "Claim Type": "Audio-Visual",
+        "Claim Origin": "Video Match",
+        "Multiple Claims?": "no",
+        "Category": "sports",
+        "Asset ID": "A120143730175123",
+        "Asset Labels": "UC8irOcdoPV-8UT1WqhwRKYQ",
+        "Asset Channel ID": "8irOcdoPV-8UT1WqhwRKYQ",
+        "Custom ID": "",
+        "Owned Views": "1",
+        "Owned Views : Watch Page": "1",
+        "Owned Views : Embedded Player": "0",
+        "Owned Views : Channel Page": "0",
+        "Owned Views : Live": "0",
+        "Owned Views : On Demand": "1",
+        "Owned Views : Ad-Enabled": "0",
+        "Owned Views : Ad-Requested": "0",
+        "YouTube Revenue Split : AdSense Served YouTube Sold": "0",
+        "YouTube Revenue Split : DoubleClick Served YouTube Sold": "0",
+        "YouTube Revenue Split : DoubleClick Served Partner Sold": "0",
+        "YouTube Revenue Split : Partner Served Partner Sold": "0",
+        "YouTube Revenue Split": "0",
+        "Partner Revenue : AdSense Served YouTube Sold": "0",
+        "Partner Revenue : DoubleClick Served YouTube Sold": "0",
+        "Partner Revenue : DoubleClick Served Partner Sold": "0",
+        "Partner Revenue : Partner Served Partner Sold": "0",
+        "Partner Revenue": "0",
+        "Estimated RPM": "0"
+      }
+    ],
+    "_id": "5ce5b61586ace6048e54fc66",
+    "name": "12",
+    "id": 0
+  }
+}
