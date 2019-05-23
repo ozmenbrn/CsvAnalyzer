@@ -8,6 +8,7 @@ import uploadIcon from "../assets/images/upload.png";
 import downloadIcon from "../assets/images/download.png";
 import deleteIcon from "../assets/images/delete.jpg";
 import calenderIcon from "../assets/images/calender.png";
+import combineIcon from "../assets/images/combine.png";
 import { CSVLink } from "react-csv";
 
 class Csv extends Component {
@@ -62,6 +63,14 @@ class Csv extends Component {
     deleteFromDB();
   }
 
+  combineEvent() {
+    const { combineInto } = this.props;
+
+    var name = prompt("Please enter exact column name to combine");
+
+    combineInto(name, this.selectTable.getResolvedState().sortedData);
+  }
+
   calenderEvent() {
     const { reOrderCalender } = this.props;
 
@@ -104,7 +113,17 @@ class Csv extends Component {
               <span> {filterMethodString} </span>
             </div>
           </Grid>
-          <Grid item xs={5} />
+          <Grid item xs={4} />
+          <Grid item xs={1}>
+            <img
+              alt="weFantastic"
+              src={combineIcon}
+              onClick={() => this.combineEvent()}
+              style={{
+                width: "30px"
+              }}
+            />
+          </Grid>
           <Grid item xs={1}>
             <img
               alt="weFantastic"

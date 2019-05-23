@@ -542,7 +542,58 @@ class Cms extends Component {
       dateString += " " + new Date(csvData[i][columnHeader]).getFullYear();
       orginezedData[i][columnHeader] = dateString;
     }
+
     this.setState({ csvData: orginezedData });
+  };
+
+  combineInto = (columnHeader, comingData) => {
+    const { csvHeader } = this.state;
+
+    let orginezedData = [];
+    let groupMap = {};
+
+    if (
+      comingData &&
+      comingData.length > 0 &&
+      comingData[0].hasOwnProperty(columnHeader)
+    ) {
+      this.setState({ loading: true });
+      for (let i = 0; i < comingData.length; i++) {
+        if (groupMap.hasOwnProperty(comingData[i][columnHeader])) {
+          for (let j = 0; j < csvHeader.length; j++) {
+            if (
+              comingData[i][csvHeader[j].Header].length === 0 ||
+              isNaN(comingData[i][csvHeader[j].Header])
+            ) {
+              /*if (
+                !JSON.stringify(
+                  groupMap[comingData[i][columnHeader]][csvHeader[j].Header]
+                ).includes(comingData[i][csvHeader[j].Header])
+              ) {
+                groupMap[comingData[i][columnHeader]][csvHeader[j].Header] +=
+                  " | " + comingData[i][csvHeader[j].Header];
+              }*/
+            } else {
+              let numberToBeAdd = parseInt(
+                groupMap[comingData[i][columnHeader]][csvHeader[j].Header]
+              );
+              groupMap[comingData[i][columnHeader]][csvHeader[j].Header] =
+                numberToBeAdd + parseInt(comingData[i][csvHeader[j].Header]);
+            }
+          }
+        } else {
+          groupMap[comingData[i][columnHeader]] = comingData[i];
+        }
+      }
+
+      for (var element in groupMap) {
+        // skip loop if the property is from prototype
+        if (!groupMap.hasOwnProperty(element)) continue;
+        orginezedData.push(groupMap[element]);
+      }
+
+      this.setState({ csvData: orginezedData, loading: false });
+    }
   };
 
   render() {
@@ -630,6 +681,7 @@ class Cms extends Component {
                 filterMethod={filterMethod}
                 filterMethodString={filterMethodString}
                 changeFilterMethod={this.changeFilterMethod}
+                combineInto={this.combineInto}
               />
             </Grid>
           </Grid>
