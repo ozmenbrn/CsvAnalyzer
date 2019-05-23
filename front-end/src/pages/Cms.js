@@ -16,6 +16,21 @@ const baseUrl = "http://localhost:3001/api/";
 const username = "5342745714";
 const password = "password";
 
+const monthNames = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
+];
+
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -260,6 +275,7 @@ class Cms extends Component {
       for (let j = 0; j < event[0].length; j++) {
         tempArray.push(event[i][j]);
       }
+
       csvBody.push(tempArray);
     }
 
@@ -295,6 +311,8 @@ class Cms extends Component {
       columns = this.getFilterBigerThan(filtered);
     } else if (i === 4) {
       columns = this.getFilterLowerThan(filtered);
+    } else if (i === 5) {
+      columns = this.getFilterCombination(filtered);
     }
 
     this.setState({ csvHeader: columns });
@@ -318,10 +336,6 @@ class Cms extends Component {
           Header: csvHeader[i].Header,
           accessor: csvHeader[i].accessor,
           filterable: true,
-          style: {
-            borderRadius: "5px",
-            borderColor: "black"
-          },
           filterMethod: (filter, row) =>
             row[filter.id] && row[filter.id].startsWith(filter.value)
         };
@@ -349,10 +363,6 @@ class Cms extends Component {
           Header: csvHeader[i].Header,
           accessor: csvHeader[i].accessor,
           filterable: true,
-          style: {
-            borderRadius: "5px",
-            borderColor: "green"
-          },
           filterMethod: (filter, row) =>
             row[filter.id] && row[filter.id].includes(filter.value)
         };
@@ -380,10 +390,6 @@ class Cms extends Component {
           Header: csvHeader[i].Header,
           accessor: csvHeader[i].accessor,
           filterable: true,
-          style: {
-            borderRadius: "5px",
-            borderColor: "red"
-          },
           filterMethod: (filter, row) =>
             row[filter.id] && row[filter.id].indexOf(filter.value) === -1
         };
@@ -411,10 +417,6 @@ class Cms extends Component {
           Header: csvHeader[i].Header,
           accessor: csvHeader[i].accessor,
           filterable: true,
-          style: {
-            borderRadius: "5px",
-            borderColor: "blue"
-          },
           filterMethod: (filter, row) =>
             row[filter.id] && parseInt(row[filter.id]) >= parseInt(filter.value)
         };
@@ -442,12 +444,35 @@ class Cms extends Component {
           Header: csvHeader[i].Header,
           accessor: csvHeader[i].accessor,
           filterable: true,
-          style: {
-            borderRadius: "5px",
-            borderColor: "purple"
-          },
           filterMethod: (filter, row) =>
             row[filter.id] && parseInt(row[filter.id]) <= parseInt(filter.value)
+        };
+        columns.push(headerElement);
+      }
+    }
+    return columns;
+  }
+
+  getFilterCombination(filtered) {
+    const { csvHeader } = this.state;
+
+    let columns = [];
+    for (let i = 0; i < csvHeader.length; i++) {
+      let isPrevious = false;
+      for (let j = 0; j < filtered.length; j++) {
+        if (filtered[j].id === csvHeader[i].Header) {
+          isPrevious = true;
+        }
+      }
+      if (isPrevious) {
+        columns.push(csvHeader[i]);
+      } else {
+        let headerElement = {
+          Header: csvHeader[i].Header,
+          accessor: csvHeader[i].accessor,
+          filterable: true,
+          filterMethod: (filter, row) =>
+            row[filter.id] && filter.value.includes(row[filter.id])
         };
         columns.push(headerElement);
       }
@@ -503,6 +528,21 @@ class Cms extends Component {
         </ListItem>
       );
     });
+  };
+
+  reOrderCalender = columnHeader => {
+    const { csvData } = this.state;
+
+    let orginezedData = [];
+
+    for (let i = 0; i < csvData.length; i++) {
+      orginezedData.push(csvData[i]);
+      let dateString =
+        monthNames[new Date(csvData[i][columnHeader]).getMonth()];
+      dateString += " " + new Date(csvData[i][columnHeader]).getFullYear();
+      orginezedData[i][columnHeader] = dateString;
+    }
+    this.setState({ csvData: orginezedData });
   };
 
   render() {
@@ -586,6 +626,7 @@ class Cms extends Component {
                 putDataToDB={this.putDataToDB}
                 deleteFromDB={this.deleteFromDB}
                 updateDB={this.updateDB}
+                reOrderCalender={this.reOrderCalender}
                 filterMethod={filterMethod}
                 filterMethodString={filterMethodString}
                 changeFilterMethod={this.changeFilterMethod}

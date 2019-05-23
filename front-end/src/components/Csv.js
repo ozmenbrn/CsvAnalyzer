@@ -7,6 +7,7 @@ import { Grid } from "@material-ui/core/es";
 import uploadIcon from "../assets/images/upload.png";
 import downloadIcon from "../assets/images/download.png";
 import deleteIcon from "../assets/images/delete.jpg";
+import calenderIcon from "../assets/images/calender.png";
 import { CSVLink } from "react-csv";
 
 class Csv extends Component {
@@ -61,6 +62,14 @@ class Csv extends Component {
     deleteFromDB();
   }
 
+  calenderEvent() {
+    const { reOrderCalender } = this.props;
+
+    var name = prompt("Please enter exact column name to orginize date");
+
+    reOrderCalender(name);
+  }
+
   downloadCsv() {
     var downloadedData = this.selectTable.getResolvedState().sortedData;
 
@@ -95,7 +104,17 @@ class Csv extends Component {
               <span> {filterMethodString} </span>
             </div>
           </Grid>
-          <Grid item xs={6} />
+          <Grid item xs={5} />
+          <Grid item xs={1}>
+            <img
+              alt="weFantastic"
+              src={calenderIcon}
+              onClick={() => this.calenderEvent()}
+              style={{
+                width: "30px"
+              }}
+            />
+          </Grid>
           <Grid item xs={2}>
             <img
               alt="weFantastic"
@@ -149,6 +168,10 @@ class Csv extends Component {
             <button onClick={() => this.selectFilter(4, "Lower Than")}>
               {" "}
               Lower Than{" "}
+            </button>
+            <button onClick={() => this.selectFilter(5, "Combine")}>
+              {" "}
+              Combine{" "}
             </button>
           </div>
         )}
