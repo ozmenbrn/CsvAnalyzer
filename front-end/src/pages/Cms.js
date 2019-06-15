@@ -418,7 +418,8 @@ class Cms extends Component {
           accessor: csvHeader[i].accessor,
           filterable: true,
           filterMethod: (filter, row) =>
-            row[filter.id] && parseInt(row[filter.id]) >= parseInt(filter.value)
+            row[filter.id] &&
+            parseFloat(row[filter.id]) >= parseFloat(filter.value)
         };
         columns.push(headerElement);
       }
@@ -445,7 +446,8 @@ class Cms extends Component {
           accessor: csvHeader[i].accessor,
           filterable: true,
           filterMethod: (filter, row) =>
-            row[filter.id] && parseInt(row[filter.id]) <= parseInt(filter.value)
+            row[filter.id] &&
+            parseFloat(row[filter.id]) <= parseFloat(filter.value)
         };
         columns.push(headerElement);
       }
@@ -574,11 +576,11 @@ class Cms extends Component {
                   " | " + comingData[i][csvHeader[j].Header];
               }*/
             } else {
-              let numberToBeAdd = parseInt(
+              let numberToBeAdd = parseFloat(
                 groupMap[comingData[i][columnHeader]][csvHeader[j].Header]
               );
               groupMap[comingData[i][columnHeader]][csvHeader[j].Header] =
-                numberToBeAdd + parseInt(comingData[i][csvHeader[j].Header]);
+                numberToBeAdd + parseFloat(comingData[i][csvHeader[j].Header]);
             }
           }
         } else {
