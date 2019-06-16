@@ -598,6 +598,37 @@ class Cms extends Component {
     }
   };
 
+  splitPipe = (columnHeader, comingData) => {
+    console.log("spliting");
+    const { csvHeader } = this.state;
+
+    let orginezedData = [];
+
+    if (
+      comingData &&
+      comingData.length > 0 &&
+      comingData[0].hasOwnProperty(columnHeader)
+    ) {
+      this.setState({ loading: true });
+      for (let i = 0; i < comingData.length; i++) {
+        orginezedData.push(comingData[i]);
+
+        let splittedArray = comingData[i][columnHeader].split("|");
+
+        if (splittedArray.length > 1) {
+          for (let k = 0; k < splittedArray.length; k++) {
+            let copyData = { ...comingData[i] };
+            copyData[columnHeader] = splittedArray[k];
+
+            orginezedData.push(copyData);
+          }
+        }
+      }
+
+      this.setState({ csvData: orginezedData, loading: false });
+    }
+  };
+
   render() {
     const {
       height,
@@ -684,6 +715,7 @@ class Cms extends Component {
                 filterMethodString={filterMethodString}
                 changeFilterMethod={this.changeFilterMethod}
                 combineInto={this.combineInto}
+                splitPipe={this.splitPipe}
               />
             </Grid>
           </Grid>
