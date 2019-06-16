@@ -599,9 +599,6 @@ class Cms extends Component {
   };
 
   splitPipe = (columnHeader, comingData) => {
-    console.log("spliting");
-    const { csvHeader } = this.state;
-
     let orginezedData = [];
 
     if (
