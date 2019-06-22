@@ -579,6 +579,9 @@ class Cms extends Component {
               let numberToBeAdd = parseFloat(
                 groupMap[comingData[i][columnHeader]][csvHeader[j].Header]
               );
+              if (isNaN(numberToBeAdd)) {
+                numberToBeAdd = 0;
+              }
               groupMap[comingData[i][columnHeader]][csvHeader[j].Header] =
                 numberToBeAdd + parseFloat(comingData[i][csvHeader[j].Header]);
             }
@@ -610,14 +613,16 @@ class Cms extends Component {
       for (let i = 0; i < comingData.length; i++) {
         orginezedData.push(comingData[i]);
 
-        let splittedArray = comingData[i][columnHeader].split("|");
+        if (comingData[i][columnHeader]) {
+          let splittedArray = comingData[i][columnHeader].split("|");
 
-        if (splittedArray.length > 1) {
-          for (let k = 0; k < splittedArray.length; k++) {
-            let copyData = { ...comingData[i] };
-            copyData[columnHeader] = splittedArray[k];
+          if (splittedArray.length > 1) {
+            for (let k = 0; k < splittedArray.length; k++) {
+              let copyData = { ...comingData[i] };
+              copyData[columnHeader] = splittedArray[k];
 
-            orginezedData.push(copyData);
+              orginezedData.push(copyData);
+            }
           }
         }
       }
