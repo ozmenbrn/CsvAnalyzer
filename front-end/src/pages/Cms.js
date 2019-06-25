@@ -616,13 +616,19 @@ class Cms extends Component {
         if (comingData[i][columnHeader]) {
           let splittedArray = comingData[i][columnHeader].split("|");
 
+          //let splitMap = {};
           if (splittedArray.length > 1) {
-            for (let k = 0; k < splittedArray.length; k++) {
-              let copyData = { ...comingData[i] };
-              copyData[columnHeader] = splittedArray[k];
+            // for (let k = 0; k < splittedArray.length; k++) {
+            //if (!splitMap.hasOwnProperty(splittedArray[k])) {
+            let copyData = { ...comingData[i] };
 
-              orginezedData.push(copyData);
-            }
+            // splitMap[splittedArray[k]] = "1";
+
+            copyData[columnHeader] = splittedArray[0];
+
+            orginezedData.push(copyData);
+            // }
+            //   }
           }
         }
       }
